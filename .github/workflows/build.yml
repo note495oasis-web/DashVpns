@@ -18,10 +18,11 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Setup Gradle 8.7
-        uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-version: '8.7'
+      - name: Force Gradle Version
+        run: |
+          cd V2rayNG
+          # Принудительно заставляем внутренний конфигуратор использовать стабильную версию 8.7
+          sed -i 's/gradle-.*-bin.zip/gradle-8.7-bin.zip/g' gradle/wrapper/gradle-wrapper.properties
 
       - name: Inject Xray Core Library
         run: |
