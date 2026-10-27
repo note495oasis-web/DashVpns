@@ -18,19 +18,13 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Prepare Core Library
-        run: |
-          cd V2rayNG
-          # Принудительно очищаем старый битый файл, если он остался
-          rm -rf app/libs/libv2ray.aar
-          mkdir -p app/libs
-          # Скачиваем стабильную библиотеку ядра напрямую через официальный инструмент релиза
-          curl -L -o app/libs/libv2ray.aar https://github.com
-
-      - name: Build Debug APK
+      - name: Clean and Build APK
         run: |
           cd V2rayNG
           chmod +x gradlew
+          # Принудительно очищаем кэши прошлых неудачных скачиваний файлов
+          ./gradlew clean
+          # Запускаем сборку: Gradle сам подтянет необходимые aar-модули
           ./gradlew assembleDebug
         env:
           ANDROID_HOME: /usr/local/lib/android/sdk
