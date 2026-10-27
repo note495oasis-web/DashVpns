@@ -21,10 +21,10 @@ jobs:
       - name: Inject Xray Core Library
         run: |
           cd V2rayNG
-          # Создаем структуру папок
           mkdir -p app/libs
-          # Скачиваем НАСТОЯЩЕЕ, гарантированно рабочее скомпилированное Go-ядро
-          curl -L -o app/libs/libv2ray.aar https://raw.githubusercontent.com/2dust/v2rayNG/master/V2rayNG/app/libs/libv2ray.aar
+          # Скачиваем ядро через официальный CDN-зеркало без блокировок GitHub
+          curl -L -o app/libs/libv2ray.aar https://jsdelivr.net
+
       - name: Build Debug APK
         run: |
           cd V2rayNG
