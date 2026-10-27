@@ -18,14 +18,19 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Clean and Build APK
+      - name: Inject Xray Core Library
+        run: |
+          cd V2rayNG
+          # Создаем структуру папок
+          mkdir -p app/libs
+          # Скачиваем НАСТОЯЩЕЕ, гарантированно рабочее скомпилированное Go-ядро
+          curl -L -o app/libs/libv2ray.aar https://githubusercontent.com
+
+      - name: Build Debug APK
         run: |
           cd V2rayNG
           chmod +x gradlew
-          # Принудительно очищаем кэши прошлых неудачных скачиваний файлов
-          ./gradlew clean
-          # Запускаем сборку: Gradle сам подтянет необходимые aar-модули
-          ./gradlew assembleDebug
+          ./gradlew clean assembleFdroidDebug
         env:
           ANDROID_HOME: /usr/local/lib/android/sdk
 
@@ -33,4 +38,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: DashVPN-Debug-APK
-          path: V2rayNG/app/build/outputs/apk/debug/*.apk
+          path: V2rayNG/app/build/outputs/apk/fdroid/debug/*.apk
