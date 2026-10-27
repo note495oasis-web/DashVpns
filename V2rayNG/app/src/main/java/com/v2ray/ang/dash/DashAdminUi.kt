@@ -138,7 +138,7 @@ private fun AdminPanelDialog(onDismiss: () -> Unit, onServersChanged: () -> Unit
                         ) { Text("Удалить") }
                     }
                 }
-                AppDivider(modifier = Modifier.padding(vertical = 12.dp))
+                HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp))
                 OutlinedTextField(
                     value = name, onValueChange = { name = it },
                     label = { Text("Название") }, singleLine = true,
