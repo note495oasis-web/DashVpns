@@ -18,12 +18,17 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      - name: Setup Gradle 8.7
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.7'
+
       - name: Inject Xray Core Library
         run: |
           cd V2rayNG
           mkdir -p app/libs
-          # Скачиваем ядро через официальный CDN-зеркало без блокировок GitHub
-          curl -L -o app/libs/libv2ray.aar https://cdn.jsdelivr.net/gh/2dust/v2rayNG@master/V2rayNG/app/libs/libv2ray.aar
+         curl -L -o app/libs/libv2ray.aar https://cdn.jsdelivr.net/gh/2dust/v2rayNG@master/V2rayNG/app/libs/libv2ray.aar
+
 
 
       - name: Build Debug APK
