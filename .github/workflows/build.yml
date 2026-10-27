@@ -27,8 +27,7 @@ jobs:
         run: |
           cd V2rayNG
           mkdir -p app/libs
-         curl -L -o app/libs/libv2ray.aar https://cdn.jsdelivr.net/gh/2dust/v2rayNG@master/V2rayNG/app/libs/libv2ray.aar
-
+          curl -L -o app/libs/libv2ray.aar "https://cdn.jsdelivr.net/gh/2dust/v2rayNG@master/V2rayNG/app/libs/libv2ray.aar"
 
 
       - name: Build Debug APK
