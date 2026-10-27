@@ -18,10 +18,12 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Download Xray Core Lybrary
+      - name: Download Xray Core Library
         run: |
           cd V2rayNG
-          # Автоматически скачиваем скомпилированное Go-ядро, которого не хватало компилятору
+          # Принудительно создаем папку для библиотек, если её нет
+          mkdir -p app/libs
+          # Скачиваем файл напрямую из официального релиза
           curl -L -o app/libs/libv2ray.aar https://github.com
 
       - name: Build Debug APK
