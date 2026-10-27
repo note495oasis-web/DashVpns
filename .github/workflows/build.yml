@@ -18,19 +18,6 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Force Gradle Version
-        run: |
-          cd V2rayNG
-          # Принудительно выставляем версию 9.6.0, которую требует плагин приложения
-          sed -i 's/gradle-.*-bin.zip/gradle-9.6.0-bin.zip/g' gradle/wrapper/gradle-wrapper.properties
-
-      - name: Inject Xray Core Library
-        run: |
-          cd V2rayNG
-          mkdir -p app/libs
-          curl -L -o app/libs/libv2ray.aar "https://cdn.jsdelivr.net/gh/2dust/v2rayNG@master/V2rayNG/app/libs/libv2ray.aar"
-
-
       - name: Build Debug APK
         run: |
           cd V2rayNG
