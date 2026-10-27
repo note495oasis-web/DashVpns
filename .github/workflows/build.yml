@@ -23,7 +23,8 @@ jobs:
           cd V2rayNG
           mkdir -p app/libs
           # Скачиваем ядро через официальный CDN-зеркало без блокировок GitHub
-          curl -L -o app/libs/libv2ray.aar https://jsdelivr.net
+          curl -L -o app/libs/libv2ray.aar https://cdn.jsdelivr.net/gh/2dust/v2rayNG@master/V2rayNG/app/libs/libv2ray.aar
+
 
       - name: Build Debug APK
         run: |
