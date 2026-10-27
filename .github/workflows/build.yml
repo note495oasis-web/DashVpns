@@ -21,8 +21,8 @@ jobs:
       - name: Force Gradle Version
         run: |
           cd V2rayNG
-          # Принудительно заставляем внутренний конфигуратор использовать стабильную версию 8.7
-          sed -i 's/gradle-.*-bin.zip/gradle-8.7-bin.zip/g' gradle/wrapper/gradle-wrapper.properties
+          # Принудительно выставляем версию 9.6.0, которую требует плагин приложения
+          sed -i 's/gradle-.*-bin.zip/gradle-9.6.0-bin.zip/g' gradle/wrapper/gradle-wrapper.properties
 
       - name: Inject Xray Core Library
         run: |
