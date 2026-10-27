@@ -18,18 +18,11 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Download Xray Core Library
-        run: |
-          cd V2rayNG
-          # Принудительно создаем папку для библиотек, если её нет
-          mkdir -p app/libs
-          # Скачиваем файл напрямую из официального релиза
-          curl -L -o app/libs/libv2ray.aar https://github.com
-
       - name: Build Debug APK
         run: |
           cd V2rayNG
           chmod +x gradlew
+          # Запускаем сборку тестового приложения
           ./gradlew assembleDebug
         env:
           ANDROID_HOME: /usr/local/lib/android/sdk
